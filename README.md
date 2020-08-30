@@ -17,7 +17,7 @@ Recuperação de senha usando token com prazo de validade e envio por SMS usando
 ## Integrações
 Consulte [sparkpost](https://www.sparkpost.com).
 
-Consulte [sparkpost](https://www.smsdev.com.br).
+Consulte [sms dev](https://www.smsdev.com.br).
 
 ## Baseado nas
 Video aulas da [Rocketseat](https://Rocketseat.com.br).
