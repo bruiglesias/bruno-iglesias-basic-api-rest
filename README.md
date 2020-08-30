@@ -26,9 +26,9 @@ Consulte [sparkpost](https://www.sparkpost.com).
 Consulte [sms dev](https://www.smsdev.com.br).
 
 ## Baseado nas
-```bash
+
 Video aulas da [Rocketseat](https://Rocketseat.com.br).
- ```
+ 
 ## Contribuição
 ```bash
 Fique a vontade para contribuir com projeto.
@@ -38,6 +38,4 @@ Fique a vontade para contribuir com projeto.
 Email: bruno.iglesias.eng@gmail.com
 ```
 ## License
-```bash
 Original de [Bruno Iglesias](https://brunoiglesias.eng.br). 
-```
