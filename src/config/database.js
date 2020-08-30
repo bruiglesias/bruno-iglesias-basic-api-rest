@@ -4,7 +4,7 @@ module.exports = {
     host: 'localhost',
     username: 'root',
     password: '',
-    database: 'api-rest-rocketseat',
+    database: 'api-rest',
     
     define: {
         timestamps: true,
