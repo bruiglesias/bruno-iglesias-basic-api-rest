@@ -1,8 +1,12 @@
 # API REST BÁSICA - BRUNO IGLESIAS
 
+```bash
 Tecnologias utilizadas: NodeJS, Sequelize, Express, MariaDB, JWT, Sparkpost e SMSdev
+```
 
 ## Como funciona:
+
+```bash
 
 API REST feita para funcionar como back-end de aplicações, implementa:
 
@@ -13,21 +17,27 @@ Autenticação de usuários e autorização em rotas utilizando token JWT,
 Recuperação de senha usando token com prazo de validade e envio por Email usando SparkPost.
 
 Recuperação de senha usando token com prazo de validade e envio por SMS usando SMSdev.
+```
 
 ## Integrações
+
 Consulte [sparkpost](https://www.sparkpost.com).
 
 Consulte [sms dev](https://www.smsdev.com.br).
 
 ## Baseado nas
+```bash
 Video aulas da [Rocketseat](https://Rocketseat.com.br).
- 
+ ```
 ## Contribuição
 ```bash
 Fique a vontade para contribuir com projeto.
 ```
 ## Contato
+```bash
 Email: bruno.iglesias.eng@gmail.com
-
+```
 ## License
+```bash
 Original de [Bruno Iglesias](https://brunoiglesias.eng.br). 
+```
