@@ -5,9 +5,14 @@ const bcrypt = require('bcrypt');
 class User extends Model{
     static init(sequelize){
         super.init({ 
-            name: DataTypes.STRING,
+            firstName: DataTypes.STRING,
+            lastName: DataTypes.STRING,
             email: DataTypes.STRING,
+            phone: DataTypes.STRING,
             password: DataTypes.STRING,
+            birthdate: DataTypes.STRING,
+            fbAuth: DataTypes.BOOLEAN,
+            accValidate: DataTypes.BOOLEAN,
             passwordResetToken: DataTypes.STRING,
             passwordResetExpires: DataTypes.DATE
 		},

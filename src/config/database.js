@@ -1,10 +1,10 @@
 module.exports = {
 
-    dialect: "mariadb",
-    host: 'localhost',
-    username: 'root',
-    password: '',
-    database: 'api-rest',
+    dialect: "mysql",
+    host: 'hostname.com.br',
+    username: 'myusername',
+    password: 'mypass',  
+    database: 'mydatabase',
     
     define: {
         timestamps: true,

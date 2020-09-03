@@ -10,7 +10,11 @@ module.exports = {
 				autoIncrement: true,
 				allowNull: false
 			},
-			name: {
+			firstName: {
+				type: Sequelize.STRING,
+				allowNull: false
+			},
+			lastName: {
 				type: Sequelize.STRING,
 				allowNull: false
 			},
@@ -18,7 +22,26 @@ module.exports = {
 				type: Sequelize.STRING,
 				allowNull: false
 			},
+			phone: {
+				type: Sequelize.STRING,
+				allowNull: false
+			},
 			password: {
+				type: Sequelize.STRING,
+				allowNull: false
+			},
+			birthdate:
+			{
+				type: Sequelize.STRING,
+				allowNull: false
+			},
+			fbAuth:
+			{
+				type: Sequelize.BOOLEAN,
+				allowNull: false
+			},
+			accValidate:
+			{
 				type: Sequelize.STRING,
 				allowNull: false
 			},

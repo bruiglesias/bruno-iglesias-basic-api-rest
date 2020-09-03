@@ -17,14 +17,19 @@ module.exports = {
 
     async register(request, response){
 
-        const { name, email, password } = request.body;
+        let transaction;
+
+        const { firstName, lastName, phone, email, password, birthdate, fbAuth, accValidate } = request.body;
+
         try
         {
+            transaction = await connection.transaction();
+
             user_verify = await User.findOne({
                 where:{
                     email,
                 }
-            });
+            }, transaction);
 
             if(user_verify)
             {
@@ -34,11 +39,9 @@ module.exports = {
                 });
             }
 
-            user = await User.create({
-                name,
-                email,
-                password,
-            });
+            user = await User.create({ firstName, lastName, phone, email, password, birthdate, fbAuth, accValidate }, transaction);
+            
+            transaction.commit();
             
             user.password = null;
 
@@ -50,6 +53,9 @@ module.exports = {
         }
         catch(e)
         {
+            
+            if (transaction) await Sequelize.rollback();
+            
             return response.json({
                 user: null,
                 error: "Falha na conexão com banco de dados.",
@@ -59,14 +65,18 @@ module.exports = {
 
     async authenticate(request, response){
         const { email, password } = request.body;
-
+        let transaction;
         try
         {
+            transaction = await connection.transaction();
+
             user = await User.findOne({
                 where:{
                     email,
                 }
-            });
+            }, transaction);
+        
+            transaction.commit();
     
             if(!user)
             {
@@ -96,6 +106,7 @@ module.exports = {
         }
         catch(e)
         {
+            if (transaction) await transaction.rollback();
             console.log(e);
             return response.json({
                 user: null,
@@ -114,15 +125,18 @@ module.exports = {
     async forgot_use_email(request, response){
 
         const { email } = request.body;
-
+        let transaction;
         try
         {
+            transaction = await connection.transaction();
             user = await User.findOne({
                 where:{
                     email,
                 }
-            });
-    
+            }, transaction);
+
+            transaction.commit();
+
             if(!user)
             {
                 return response.json({
@@ -163,6 +177,7 @@ module.exports = {
         catch(e)
         {
             console.log(e);
+            if (transaction) await transaction.rollback();
             return response.json({
                 error: "Falha ao tentar recuperar dados.",
             });
@@ -172,15 +187,18 @@ module.exports = {
     async forgot_use_sms(request, response){
 
         const { email } = request.body;
-
+        let transaction;
         try
         {
+            transaction = await connection.transaction();
             user = await User.findOne({
                 where:{
                     email,
                 }
-            });
-    
+            }, transaction);
+            
+            transaction.commit();
+
             if(!user)
             {
                 return response.json({
@@ -221,6 +239,7 @@ module.exports = {
         catch(e)
         {
             console.log(e);
+            if (transaction) await transaction.rollback();
             return response.json({
                 error: "Falha ao tentar recuperar dados.",
             });
@@ -230,14 +249,16 @@ module.exports = {
     async reset_password(request, response)
     {
         const { email, token, password } = request.body;
+        let transaction;
 
         try{
+            transaction = await connection.transaction();
             user = await User.findOne({
                 where:{
                     email,
                 }
-            });
-    
+            }, transaction);
+            
             if(!user)
             {
                 return response.json({
@@ -261,7 +282,7 @@ module.exports = {
                 });
             }
 
-            user.password = password;
+            user.password =  await bcrypt.hash(password, 10);
             await user.save();
 
             return response.json({
@@ -272,6 +293,7 @@ module.exports = {
         catch(e)
         {
             console.log(e);
+            if (transaction) await transaction.rollback();
             return response.json({
                 error: "Falha ao tentar recuperar dados.",
             });
